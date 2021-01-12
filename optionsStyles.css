@@ -1,0 +1,284 @@
+h1{
+    font-family: Helvetica Neue;
+    color: #707070;
+}
+
+.settings {
+    display: table-cell;
+    vertical-align: middle;
+    background-color: #FDBC54; 
+    border-radius: 50%; 
+    height: 40px; 
+    width:40px;
+    text-align: center;
+    margin: auto;
+    display: inline-flex;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+body {
+    background-color: #E8E8E8;
+}
+#title {
+    display: inline; vertical-align: bottom;
+}
+
+#settingsIcon {
+    color: white;
+    display: inline-block;
+    margin: auto; 
+}
+
+.container {
+    margin:30px;
+    /* border: solid black; */
+}
+
+button {
+border: none;
+outline: none;
+cursor: pointer;
+}
+
+.up_button{
+padding: 5px;
+border-radius: 8px;
+font-family: Avenir;
+color: white;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+.up_button:active{
+padding: 5px;
+border-radius: 8px;
+font-family: Avenir;
+box-shadow: none;
+}
+
+
+.save{
+background-color: #88C468;
+}
+
+.save:active{
+    background-color: #88c468d0;
+}
+
+.discard {
+background-color: #C47A68
+}
+
+.discard:active {
+    background-color: #c47b68d0
+    }
+
+.settings_space{
+background-color: white;
+border-radius: 8px;
+margin-top: 20px;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+padding: 30px;
+position: relative;
+}
+
+.pref_table{
+font-family: Avenir;
+color: #707070;
+line-height: normal;
+font-weight: bold;
+
+width: 100%;
+height: 100%;
+}
+
+.pref_table td {
+padding: 10px;
+vertical-align: bottom;
+font-size: 14px;
+}
+
+.pref_table tr:first-child td {
+border-bottom: solid #D3D3D3;
+border-width: 1px;
+
+font-size: 20px;
+}
+
+select{
+font-family: Avenir;
+color: #707070;
+font-weight: bold;
+font-size: 14px;
+border: none;
+outline: none;
+color: #707070;
+text-align: left;
+text-align-last: left; 
+background-color: transparent;
+
+}
+
+.select_div{
+display: inline;
+background-color: #F2F2F2;
+padding: 2px;
+border-radius: 12px;
+width: min-content;
+padding-right: 7px;
+padding-left: 7px;
+}
+
+
+input[type=number]{
+font-family: Avenir;
+color: #707070;
+font-weight: bold;
+font-size: 14px;
+border: none;
+outline: none;
+color: #707070;
+background-color: transparent;
+
+}
+
+INPUT[type=checkbox]{
+outline: none;
+display: inline-block;
+line-height: normal;
+vertical-align: bottom;
+}
+INPUT[type=checkbox]:focus
+{
+color: #88C468;
+}
+
+INPUT[type=checkbox]
+{
+background-color: #F2F2F2;
+border: none;
+appearance: none;
+-webkit-appearance: none;
+-moz-appearance: none;
+width: 17px;
+height: 17px;
+cursor: pointer;
+position: relative;
+border-radius: 50%;
+}
+
+INPUT[type=checkbox]:checked
+{
+background-color:#88C468;
+background: #88C468 url("data:image/gif;base64,R0lGODlhCwAKAIABAP////3cnSH5BAEKAAEALAAAAAALAAoAAAIUjH+AC73WHIsw0UCjglraO20PNhYAOw==") 3px 3px no-repeat;
+}
+
+.visible_div{
+display: inline;
+background-color: transparent;
+
+
+width: min-content;
+}
+
+.topBar {
+    text-align: right;
+    width: 100%
+}
+
+#status{
+    display: none;
+    position: absolute;
+    left: 40%;
+    margin-right: 30px;
+    font-family: Avenir;
+    color: #707070;
+    opacity: 80%;
+}
+
+.showSaved{
+    text-align: center;
+    background-color: rgb(197, 194, 194);
+    width: 200px;
+    border-radius: 15px;
+    padding: 5px;
+}
+
+
+
+
+.day {
+    font-family: Avenir;
+     color: #9A9A9A;
+     font-weight: 500;
+     width: 350px;
+}
+
+.time {
+    width: 150px;
+    font-family: Avenir;;
+    color: #9A9A9A;
+    font-size: 12px;
+    border: solid black
+}
+
+#Schedule{
+    border: none;
+    text-align: center;
+    border-collapse: collapse;
+    
+}
+
+.day{
+    border: none;
+    height: 50px
+}
+.lecture{
+border-color: #CECECE;
+border-style: solid;
+border-width: 1px;
+height: 50px
+}
+
+#Schedule tr td:first-child{
+    border: none;
+}
+
+
+#Schedule tr td:nth-child(2){
+    border-left: none;
+}
+
+#Schedule tr td:last-child{
+    border-right: none;
+}
+
+#Schedule tr:nth-child(2) td{
+    border-top: none;
+}
+
+#Schedule tr:last-child td{
+    border-bottom: none;
+}
+
+#schedule td {
+    position: relative;
+    text-align: center;
+}
+
+#schedule td span {
+    position: absolute;
+    top: -10px;
+    left: 0px;
+    text-align: center;
+    width: 50px;
+    border: none;
+}
+
+.lectBox{
+width: 100%;
+height: 100%;
+}
+
+.lectBox{
+    background-color: pink;
+}

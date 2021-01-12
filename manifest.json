@@ -1,0 +1,25 @@
+{
+  "manifest_version": 2,
+  "name": "Nito",
+  "version": "0.1",
+  "description":"Neat Schedule for your success",
+  "permissions": [
+    "https://code.jquery.com/ui/1.12.1/jquery-ui.js",
+    "https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"
+],
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": ["jquery-3.5.1.min.js", "content.js"]
+    }
+  ],
+  "browser_action": {
+    "default_icon": "Logo.png",
+    "default_popup": "index.html"
+  },
+  "options_page": "options.html",
+  "content_security_policy": "script-src 'self' 'unsafe-eval' https://ajax.googleapis.com; object-src 'self'"
+
+}

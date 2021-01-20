@@ -2,7 +2,7 @@
 
 <head>
 
-    <title>Nito</title>
+    <title>Options | Nito</title>
     <script src="jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>    
     <script src="moment.min.js"></script>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -19,7 +19,7 @@
             <tr>
                 <td style="text-align: left;">
                     <div class="settings">
-                        <!-- <i id="settingsIcon" class="fas fa-pencil-alt"></i> -->
+                        <i id="settingsIcon" class="fas fa-pencil-alt"></i>
                     </div>
                     <h1 id="title"> &nbsp; Settings</h1>
                 </td>
@@ -63,13 +63,13 @@
                                     <div class="select_div">
 
                                         <select name="firstDay" id="firstDay">
-                                            <option value="Sunday">Sunday &nbsp;</option>
-                                            <option value="Monday">Monday &nbsp;</option>
-                                            <option value="Tuesday">Tuesday &nbsp;</option>
-                                            <option value="Wednesday">Wednesday &nbsp;</option>
-                                            <option value="Thursday">Thursday &nbsp;</option>
-                                            <option value="Friday">Friday &nbsp;</option>
-                                            <option value="Saturday">Saturday &nbsp;</option>
+                                            <option value="Sun">Sun &nbsp;</option>
+                                            <option value="Mon">Mon &nbsp;</option>
+                                            <option value="Tue">Tue &nbsp;</option>
+                                            <option value="Wed">Wed &nbsp;</option>
+                                            <option value="Thu">Thu &nbsp;</option>
+                                            <option value="Fri">Fri &nbsp;</option>
+                                            <option value="Sat">Sat &nbsp;</option>
                                         </select>
 
                                     </div>
@@ -83,8 +83,7 @@
                                     <div class="select_div">
                                         <!-- Hours -->
                                         <input type="number" id="firstLectureHours" name="firstLectureHours" min="00"
-                                            max="23" step="1" value="08"
-                                            >
+                                            max="12" step="1" value="08">
                                     </div>
                                     &nbsp; : &nbsp;
                                     <div class="select_div">
@@ -107,7 +106,7 @@
                                     <div class="visible_div">
 
                                         <!-- Other options -->
-                                        <input type="checkbox" id="showEmoji" name="showEmoji" value="showEmoji">
+                                        <input type="checkbox" id="showEmoji" name="showEmoji" value="showEmoji" checked>
                                     </div>
                                     <label for="showEmoji">Emoji</label>
                                 </td>
@@ -164,7 +163,7 @@
                                 <td>
                                     <div class="visible_div">
 
-                                        <input type="checkbox" id="showRoom" name="showRoom" value="showRoom">
+                                        <input type="checkbox" id="showRoom" name="showRoom" value="showRoom" checked>
                                     </div>
                                     <label for="showRoom">Room</label>
                                 </td>
@@ -198,21 +197,17 @@
                                 </td>
                                 <td></td>
                                 <td>
-                                    <div class="visible_div">
-
-                                        <input type="checkbox" id="showLecturer" name="showLecturer" value="showLecturer">
-                                    </div>
-                                    <label for="showLecturer">Lecturer</label>
+                                    
                                 </td>
 
                                 
                             </tr>
 
-                            <tr>
+                            <!-- <tr>
                                 <td></td>
                                 <td></td>
                                 
-                                <!-- Other options -->
+                                
 
                                 <td>Visible Info
                                     &nbsp;
@@ -223,7 +218,7 @@
                                     &nbsp;
                                     <div class="visible_div">
 
-                                        <!-- Other options -->
+                                        
                                         <input type="checkbox" id="showEmoji" name="showEmoji" value="showEmoji">
                                     </div>
                                     <label for="showEmoji">Emoji</label>
@@ -238,14 +233,8 @@
 
                                     &nbsp;
 
-                                    <div class="visible_div">
-
-                                        <input type="checkbox" id="showLecturer" name="showLecturer" value="showLecturer">
-                                    </div>
-                                    <label for="showLecturer">Lecturer</label>
-
                                 </td>
-                            </tr>
+                            </tr> -->
                         </table>
                     </div>
                 </td>
@@ -271,11 +260,11 @@
 <table id="Schedule">
     <tr>
         <td class="time"></td>
-        <td class="day">Sunday</td>
-        <td class="day">Monday</td>
-        <td class="day">Tuesday</td>
-        <td class="day">Wednesday</td>
-        <td class="day">Thursday</td>
+        <td class="day">Sun</td>
+        <td class="day">Mon</td>
+        <td class="day">Tue</td>
+        <td class="day">Wed</td>
+        <td class="day">Thu</td>
         
     </tr>
     

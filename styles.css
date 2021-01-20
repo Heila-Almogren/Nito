@@ -121,7 +121,8 @@ height: 100%;
     padding:0px;
     display: grid;
     gap: 0px;
-    justify-content: flex-start;
+    /* justify-content: flex-start; */
+    justify-content: stretch;
     box-sizing: border-box;
     padding:0px;
     margin:auto;
@@ -142,23 +143,41 @@ height: 100%;
 }
 
 .emoji{
+    
     grid-column-start: 1;
     grid-column-end: 1;
     grid-row-start: 1;
-    grid-row-end: span 2;
     vertical-align: middle;
     box-sizing: border-box; 
     text-align: center;
-    font-size: 20px;;
+    font-size: 25px;
+    width:fit-content
+}
+
+
+.emojiSpan {
+    grid-row-end: span 2;
+}
+
+.emojiNoSpan {
+    grid-row-end: 1;
 }
 
 .lecName {
     grid-column-start: 2;
     grid-column-end: 2;
     grid-row-start: 1;
-    grid-row-end: 1;
+    
     font-size: 12px;
     font-weight: bold;
+}
+
+.lecNameNoSpan {
+    grid-row-end: 1;
+}
+
+.lecNameSpan {
+    grid-row-end: span 2;
 }
 
 .lecRoom{
@@ -167,6 +186,26 @@ height: 100%;
     grid-row-start: 2;
     grid-row-end: 2;
 }
+
+.lecDel{
+    grid-column-start: 3;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: span 2;
+    text-align: right;
+    opacity:0%;
+}
+
+.lecDel:hover{
+opacity:100%
+}
+
+.deleteIcon {
+    cursor: pointer;
+font-size: 15px;
+color: darkred;
+}
+
 
 .addButton{
     position:absolute;
@@ -189,6 +228,20 @@ height: 100%;
     justify-content: center
 }
 
+.colorPickSelector {
+    border-radius: 5px;
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+    -webkit-transition: all linear .2s;
+    -moz-transition: all linear .2s;
+    -ms-transition: all linear .2s;
+    -o-transition: all linear .2s;
+    transition: all linear .2s;
+  }
+  
+/* .colorPickSelector:hover { transform: scale(1.1); } */
+
 .addButton:hover{
     width: 30px;
     height:30px;
@@ -207,10 +260,27 @@ height: 100%;
     padding: 2px; 
     padding-left: 5px; 
     padding-right: 5px; 
-    width: 120px;
+    
     color: black;
     font-family: Avenir;
     font-size: 12px;
+}
+
+#titleArea{
+width: 120px;
+}
+
+#roomArea{
+    width: 90px;
+    clear: left
+}
+
+.inputTD {
+    text-align:left;
+    padding: 0px;
+    padding-left:10px;
+    padding-right:10px;
+    
 }
 
 ::-webkit-input-placeholder { /* Edge */
@@ -226,7 +296,7 @@ height: 100%;
   }
 
 #add_pop{
-    z-index: 10;
+    z-index: 100;
     font-family: Avenir;
     width: 200px;
     height: 130px;
@@ -284,3 +354,27 @@ height: 100%;
 .addLectureButton:hover{
     background-color: #a0a0a0;
 }
+
+
+.colorPickSelector {
+    border-radius: 5px;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    -webkit-transition: all linear .2s;
+    -moz-transition: all linear .2s;
+    -ms-transition: all linear .2s;
+    -o-transition: all linear .2s;
+    transition: all linear .2s;
+  }
+  
+  .colorPickSelector:hover { transform: scale(1.1); }
+
+/* .has_lecture{
+    background-color: rgb(151, 60, 60);
+    border: solid black
+}
+
+.nolect{
+    background-color: blue;
+} */

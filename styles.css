@@ -1,0 +1,380 @@
+
+:root {
+    --days: #1e90ff;
+  }
+
+body {
+    width: 700px;
+    padding: 30px;
+}
+
+h1{
+    font-family: Helvetica Neue;
+    color: #707070;
+}
+
+td{
+    text-align: center;
+}
+
+.day {
+    font-family: Avenir;
+     color: #9A9A9A;
+     font-weight: 500;
+     width: 350px;
+}
+
+.time {
+    width: 150px;
+    font-family: Avenir;;
+    color: #9A9A9A;
+    font-size: 12px;
+    border: solid black
+}
+
+#Schedule{
+    border: none;
+    text-align: center;
+    border-collapse: collapse;
+    
+}
+
+.day{
+    border: none;
+    height: 50px
+}
+.lecture{
+border-color: #CECECE;
+border-style: solid;
+border-width: 1px;
+height: 50px;
+text-align: center;
+font-family: Avenir;
+font-size: 10px; 
+box-sizing: border-box;
+}
+
+#Schedule tr td:first-child{
+    border: none;
+}
+
+
+#Schedule tr td:nth-child(2){
+    border-left: none;
+}
+
+#Schedule tr td:last-child{
+    border-right: none;
+}
+
+#Schedule tr:nth-child(2) td{
+    border-top: none;
+}
+
+#Schedule tr:last-child td{
+    border-bottom: none;
+}
+
+#Schedule td {
+    position: relative;
+    text-align: center;
+}
+
+#Schedule td span {
+    position: absolute;
+    top: -10px;
+    left: 0px;
+    text-align: center;
+    width: 50px;
+    border: none;
+}
+
+.lectBox{
+width: 100%;
+height: 100%;
+}
+
+.lectBox{
+    background-color: pink;
+    padding:0px;
+    box-sizing: border-box;
+}
+
+.settings {
+    display: table-cell;
+    vertical-align: middle;
+    background-color: #FDBC54; 
+    border-radius: 50%; 
+    height: 40px; 
+    width:40px;
+    
+}
+
+.lecDiv {
+    position:absolute;
+    top:0;
+    margin:auto;
+    z-index: 10;
+    cursor: grab;
+    vertical-align: middle;
+    text-align: center;
+    padding:0px;
+    display: grid;
+    gap: 0px;
+    /* justify-content: flex-start; */
+    justify-content: stretch;
+    box-sizing: border-box;
+    padding:0px;
+    margin:auto;
+    width: 100%;
+    height: 100%;
+    background-color: cornflowerblue;
+    border-radius: 5px;
+}
+
+.lecInfo{
+    display: flex;
+    align-items: center;
+    margin:0px;
+    padding:5px;
+    padding-top:0px;
+    padding-bottom:0px;
+    box-sizing: border-box;
+}
+
+.emoji{
+    
+    grid-column-start: 1;
+    grid-column-end: 1;
+    grid-row-start: 1;
+    vertical-align: middle;
+    box-sizing: border-box; 
+    text-align: center;
+    font-size: 25px;
+    width:fit-content
+}
+
+
+.emojiSpan {
+    grid-row-end: span 2;
+}
+
+.emojiNoSpan {
+    grid-row-end: 1;
+}
+
+.lecName {
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.lecNameNoSpan {
+    grid-row-end: 1;
+}
+
+.lecNameSpan {
+    grid-row-end: span 2;
+}
+
+.lecRoom{
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 2;
+}
+
+.lecDel{
+    grid-column-start: 3;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: span 2;
+    text-align: right;
+    opacity:0%;
+}
+
+.lecDel:hover{
+opacity:100%
+}
+
+.deleteIcon {
+    cursor: pointer;
+font-size: 15px;
+color: darkred;
+}
+
+
+.addButton{
+    position:absolute;
+    background-color: #cbcbcb;
+    border-radius: 5px;
+    width: 25px;
+    height:25px;
+    margin:auto;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    align-items: center;
+    vertical-align: middle;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+}
+
+.colorPickSelector {
+    border-radius: 5px;
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+    -webkit-transition: all linear .2s;
+    -moz-transition: all linear .2s;
+    -ms-transition: all linear .2s;
+    -o-transition: all linear .2s;
+    transition: all linear .2s;
+  }
+  
+/* .colorPickSelector:hover { transform: scale(1.1); } */
+
+.addButton:hover{
+    width: 30px;
+    height:30px;
+    font-size: 20px;
+}
+
+.plus {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.lectureInput{
+    border: none;
+    outline: none; 
+    border-radius: 5px; 
+    padding: 2px; 
+    padding-left: 5px; 
+    padding-right: 5px; 
+    
+    color: black;
+    font-family: Avenir;
+    font-size: 12px;
+}
+
+#titleArea{
+width: 120px;
+}
+
+#roomArea{
+    width: 90px;
+    clear: left
+}
+
+.inputTD {
+    text-align:left;
+    padding: 0px;
+    padding-left:10px;
+    padding-right:10px;
+    
+}
+
+::-webkit-input-placeholder { /* Edge */
+    color: #CECECE;
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #CECECE;
+  }
+  
+  ::placeholder {
+    color: #CECECE;
+  }
+
+#add_pop{
+    z-index: 100;
+    font-family: Avenir;
+    width: 200px;
+    height: 130px;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    text-align: center;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: gainsboro;
+    opacity: 100%;
+    display: none;
+    /* box-shadow: 0px 2px 2px rgba(0,0,0,0.2); */
+
+
+}
+
+#emojiArea{
+    z-index: 10;
+    font-size: 40px;
+    text-align: center;
+    cursor:pointer;
+    border: none;
+    outline: none;
+    background-color: white;
+    border-radius: 5px;
+    width:50px;
+    height: 50px;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+
+}
+
+
+.addLectureButton{
+    font-family: Avenir;
+    font-size: 12px;
+    width: 100px;
+    height: 20px;
+    background-color: #C3C3C3;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.addLectureButton:hover{
+    background-color: #a0a0a0;
+}
+
+
+.colorPickSelector {
+    border-radius: 5px;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    -webkit-transition: all linear .2s;
+    -moz-transition: all linear .2s;
+    -ms-transition: all linear .2s;
+    -o-transition: all linear .2s;
+    transition: all linear .2s;
+  }
+  
+  .colorPickSelector:hover { transform: scale(1.1); }
+
+/* .has_lecture{
+    background-color: rgb(151, 60, 60);
+    border: solid black
+}
+
+.nolect{
+    background-color: blue;
+} */

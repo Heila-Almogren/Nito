@@ -1,0 +1,374 @@
+<html>
+
+<head>
+
+    <title>Options | Nito</title>
+    <script src="jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>    
+    <script src="moment.min.js"></script>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="optionsStyles.css" />
+    
+
+</head>
+
+<body>
+
+    <div class="container">
+        <table class="topBar">
+            <tr>
+                <td style="text-align: left;">
+                    <div class="settings">
+                        <i id="settingsIcon" class="fas fa-pencil-alt"></i>
+                    </div>
+                    <h1 id="title"> &nbsp; Settings</h1>
+                </td>
+                <td style="text-align: right;">
+
+                    <div id="status">
+                        <div class="showSaved"><i class="fas fa-check" style="color: #88C468;"></i> &nbsp; Changes Saved</div>
+                    </div>
+                    <!-- Save / discard buttons -->
+                    <button class="up_button save" id="save">&nbsp; SAVE CHANGES &nbsp;</button>
+                    &nbsp; &nbsp; <button class="up_button discard">&nbsp; DISCARD CHANGES &nbsp; </button>
+
+
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="settings_space">
+
+                        <!-- preferences area -->
+
+                        <table class="pref_table">
+
+                            <!-- preferences main titles -->
+                            <tr>
+                                <td>Week Preferences</td>
+                                <td style="border: none;"></td>
+                                <td>Lecture Preferences</td>
+                                <td style="border: none;"></td>
+                                <td>Visible Info</td>
+
+                            </tr>
+
+
+                            <tr>
+                                <td>
+                                    <!-- First day of the week -->
+
+                                    <label for="firstDay">First day of the week &nbsp; &nbsp;</label>
+
+                                    <div class="select_div">
+
+                                        <select name="firstDay" id="firstDay">
+                                            <option value="Sun">Sun &nbsp;</option>
+                                            <option value="Mon">Mon &nbsp;</option>
+                                            <option value="Tue">Tue &nbsp;</option>
+                                            <option value="Wed">Wed &nbsp;</option>
+                                            <option value="Thu">Thu &nbsp;</option>
+                                            <option value="Fri">Fri &nbsp;</option>
+                                            <option value="Sat">Sat &nbsp;</option>
+                                        </select>
+
+                                    </div>
+
+                                </td>
+                                <td></td>
+
+                                <!-- First lecture time -->
+
+                                <td>First lecture time &nbsp; &nbsp;
+                                    <div class="select_div">
+                                        <!-- Hours -->
+                                        <input type="number" id="firstLectureHours" name="firstLectureHours" min="00"
+                                            max="12" step="1" value="08">
+                                    </div>
+                                    &nbsp; : &nbsp;
+                                    <div class="select_div">
+                                        <!-- Minutes -->
+                                        <input type="number" id="firstLectureMins" name="firstLectureMins" min="00"
+                                            max="45" step="15" value="00"
+                                            >
+                                    </div>
+                                    &nbsp;
+                                    <div class="select_div">
+                                        <!-- Day / Night -->
+                                        <select name="firstLecturePeriod" id="firstLecturePeriod">
+                                            <option value="am">am</option>
+                                            <option value="pm">pm</option>
+                                        </select>
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <div class="visible_div">
+
+                                        <!-- Other options -->
+                                        <input type="checkbox" id="showEmoji" name="showEmoji" value="showEmoji" checked>
+                                    </div>
+                                    <label for="showEmoji">Emoji</label>
+                                </td>
+
+                            </tr>
+
+                            <tr>
+                                <td>
+
+
+                                    <!-- Number of days per week -->
+                                    <label for="nDays">No. days per week &nbsp; &nbsp; &nbsp; &nbsp;</label>
+                                    <div class="select_div">
+                                        <select name="nDays" id="nDays" >
+                                            <option value="3">&nbsp; 3 &nbsp;</option>
+                                            <option value="4">&nbsp; 4 &nbsp;</option>
+                                            <option value="5" selected>&nbsp; 5 &nbsp;</option>
+                                            <option value="6">&nbsp; 6 &nbsp;</option>
+                                            <option value="7">&nbsp; 7 &nbsp;</option>
+                                        </select>
+                                    </div>
+
+
+
+
+                                </td>
+                                <td></td>
+                                <!-- First lecture time -->
+
+                                <td>Last lecture time &nbsp; &nbsp;
+                                    <div class="select_div">
+                                        <!-- Hours -->
+                                        <input type="number" id="lastLectureHours" name="lastLectureHours" min="00"
+                                            max="12" step="1" value="04"
+                                            >
+                                    </div>
+                                    &nbsp; : &nbsp;
+                                    <div class="select_div">
+                                        <!-- Minutes -->
+                                        <input type="number" id="lastLectureMins" name="lastLectureMins" min="00"
+                                            max="45" step="15" value="00"
+                                            >
+                                    </div>
+                                    &nbsp;
+                                    <div class="select_div">
+                                        <!-- Day / Night -->
+                                        <select name="lastLecturePeriod" id="lastLecturePeriod">
+                                            <option value="am">am</option>
+                                            <option value="pm" selected>pm</option>
+                                        </select>
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <div class="visible_div">
+
+                                        <input type="checkbox" id="showRoom" name="showRoom" value="showRoom" checked>
+                                    </div>
+                                    <label for="showRoom">Room</label>
+                                </td>
+
+
+                            </tr>
+
+                            <tr>
+                                <td></td>
+                                <td></td>
+
+                                <!-- Lecture duration -->
+                                <td>Lecture duration
+                                    &nbsp; &nbsp;
+                                    <div class="select_div">
+
+                                        <!-- Lecture duration in hours -->
+                                        <input type="number" id="lectureDurationHours" name="lectureDurationHours" min="00" max="24" step="1" value="1">
+                                    </div>
+                                    &nbsp; Hours
+
+                                    &nbsp;
+                                    <div class="select_div">
+
+                                        <!-- Lecture duration in minutes -->
+                                        <input type="number" id="lectureDurationMinutes" name="lectureDurationMinutes" min="00" max="59" step="5" value="00"
+                                            onchange="if(parseInt(this.value,10)<10)this.value='0'+this.value;">
+                                    </div>
+                                    &nbsp; Minutes
+
+                                </td>
+                                <td></td>
+                                <td>
+                                    
+                                </td>
+
+                                
+                            </tr>
+
+                            <!-- <tr>
+                                <td></td>
+                                <td></td>
+                                
+                                
+
+                                <td>Visible Info
+                                    &nbsp;
+                                    &nbsp;
+                                    &nbsp;
+                                    &nbsp;
+                                    &nbsp;
+                                    &nbsp;
+                                    <div class="visible_div">
+
+                                        
+                                        <input type="checkbox" id="showEmoji" name="showEmoji" value="showEmoji">
+                                    </div>
+                                    <label for="showEmoji">Emoji</label>
+                                    
+                                    &nbsp;
+
+                                    <div class="visible_div">
+
+                                        <input type="checkbox" id="showRoom" name="showRoom" value="showRoom">
+                                    </div>
+                                    <label for="showRoom">Room</label>
+
+                                    &nbsp;
+
+                                </td>
+                            </tr> -->
+                        </table>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="settings_space">
+                        <!-- schedule table -->
+                        <div id="errorMsg" style="font-family: Avenir; width: 300px; height: 100px; position: absolute; margin: auto; left: 0; right: 0; top: 0; bottom: 0; text-align: center; border-radius: 10px; padding: 15px; background-color: gainsboro; opacity: 100%; display: none">
+                            <table  style="width: 100%; height: 100%;">
+                                <tr>
+                                    <td><i class="fas fa-exclamation-triangle" style=" font-size: 50px; color: #ff0f0f; margin-right: 20px;"></i></td>
+                                    <td id="errorTD">
+                                        
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            
+                            
+                            </div>
+
+<table id="Schedule">
+    <tr>
+        <td class="time"></td>
+        <td class="day">Sun</td>
+        <td class="day">Mon</td>
+        <td class="day">Tue</td>
+        <td class="day">Wed</td>
+        <td class="day">Thu</td>
+        
+    </tr>
+    
+<tr>
+    <td class="time"><span>08:00</span></td>
+    <td class="lecture">
+        
+        <!-- <div class="lectBox">
+            <table class="lectable">
+                <tr>
+                    <td rowspan="2" width="50%">C</td>
+                    <td width="50%">Math</td>
+                </tr>
+                <tr>
+                    
+                    <td width="50%">6GA-22</td>
+                </tr>
+            </table>
+        </div> -->
+
+    </td>
+    <td class="lecture"></td>
+    <td class="lecture"></td>
+    <td class="lecture"></td>
+    <td class="lecture"></td>
+</tr>
+<tr>
+    <td class="time"><span>09:00</span></td>
+    <td class="lecture"></td>
+    <td class="lecture"></td>
+    <td class="lecture"></td>
+    <td class="lecture"></td>
+    <td class="lecture"></td>
+</tr>
+<tr>
+    <td class="time"><span>10:00</span></td>
+    <td class="lecture"></td>
+    <td class="lecture"></td>
+    <td class="lecture"></td>
+    <td class="lecture"></td>
+    <td class="lecture"></td>
+</tr>
+<tr>
+    <td class="time"><span>11:00</span></td>
+    <td class="lecture"></td>
+    <td class="lecture"></td>
+    <td class="lecture"></td>
+    <td class="lecture"></td>
+    <td class="lecture"></td>
+</tr>
+<tr>
+    <td class="time"><span>12:00</span></td>
+    <td class="lecture"></td>
+    <td class="lecture"></td>
+    <td class="lecture"></td>
+    <td class="lecture"></td>
+    <td class="lecture"></td>
+</tr>
+<tr>
+    <td class="time"><span>01:00</span></td>
+    <td class="lecture"></td>
+    <td class="lecture"></td>
+    <td class="lecture"></td>
+    <td class="lecture"></td>
+    <td class="lecture"></td>
+</tr>
+<tr>
+    <td class="time"><span>02:00</span></td>
+    <td class="lecture"></td>
+    <td class="lecture"></td>
+    <td class="lecture"></td>
+    <td class="lecture"></td>
+    <td class="lecture"></td>
+</tr>
+<tr>
+    <td class="time"><span>03:00</span></td>
+    <td class="lecture"></td>
+    <td class="lecture"></td>
+    <td class="lecture"></td>
+    <td class="lecture"></td>
+    <td class="lecture"></td>
+</tr>
+
+</table>
+
+
+                        
+                    </div>
+                </td>
+            </tr>
+            
+        </table>
+    </div>
+
+
+
+
+
+    
+    
+    <!-- <button id="save">Save</button> -->
+    <script src="options.js"></script>
+</body>
+
+
+
+</html>

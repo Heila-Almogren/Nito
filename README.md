@@ -21,16 +21,19 @@ Adding a new lecture by clicking on any empty space in the schedule
 <br>
 <p align="center">
   <img src="https://github.com/Heila-Almogren/Nito/blob/main/Demo/Preview%202.png?raw=true" width="500">
+  <br>
   Changing the position of any lecture by dragging it into its new position
 </p>
 <br>
 <p align="center">
   <img src="https://github.com/Heila-Almogren/Nito/blob/main/Demo/Preview%203.png?raw=true" width="500">
+  <br>
   Easily adding a new lecture with a related emoji and room number
 </p>
 <br>
 <p align="center">
   <img src="https://github.com/Heila-Almogren/Nito/blob/main/Demo/Preview%204.png?raw=true" width="500">
+  <br>
   Changing the settings of the schedule and what details to view
 </p>
 

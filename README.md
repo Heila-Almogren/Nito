@@ -9,9 +9,7 @@ A chrome extension that provides a neat, simple and efficient lectures schedule.
 
 ### Installation
 1. From a chrome browser, click on extentions icon > Manage extensions (or from the menu choose more tools > extensions).
-<br>
 2. Enable dveloper mode.
-<br>
 3. click on 'Load unpacked' then choose 'code' folder (inside Nito folder).
 
 ### Screenshots

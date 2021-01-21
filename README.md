@@ -14,22 +14,28 @@ A chrome extension that provides a neat, simple and efficient lectures schedule.
 
 ### Screenshots
 <p align="center">
-
-<figure>
-  <img src="https://github.com/Heila-Almogren/Nito/blob/main/Demo/Preview%201.png?raw=true" width="500">
-  <figcaption>Adding a new lecture by clicking on any empty space in the schedule</figcaption>
-</figure>
-<figure>
-  <img src="https://github.com/Heila-Almogren/Nito/blob/main/Demo/Preview%202.png?raw=true" width="500">
-  <figcaption>Changing the position of any lecture by dragging it into its new position</figcaption>
-</figure>
-<figure>
-  <img src="https://github.com/Heila-Almogren/Nito/blob/main/Demo/Preview%203.png?raw=true" width="500">
-  <figcaption>Easily adding a new lecture with a related emoji and room number</figcaption>
-</figure>
-<figure>
-  <img src="https://github.com/Heila-Almogren/Nito/blob/main/Demo/Preview%204.png?raw=true" width="500">
-  <figcaption>Changing the settings of the schedule and what details to view</figcaption>
-</figure>
-
+<img src="https://github.com/Heila-Almogren/Nito/blob/main/Demo/Preview%201.png?raw=true" width="500">
+  <br>
+Adding a new lecture by clicking on any empty space in the schedule
 </p>
+<br>
+<p align="center">
+  <img src="https://github.com/Heila-Almogren/Nito/blob/main/Demo/Preview%202.png?raw=true" width="500">
+  Changing the position of any lecture by dragging it into its new position
+</p>
+<br>
+<p align="center">
+  <img src="https://github.com/Heila-Almogren/Nito/blob/main/Demo/Preview%203.png?raw=true" width="500">
+  Easily adding a new lecture with a related emoji and room number
+</p>
+<br>
+<p align="center">
+  <img src="https://github.com/Heila-Almogren/Nito/blob/main/Demo/Preview%204.png?raw=true" width="500">
+  Changing the settings of the schedule and what details to view
+</p>
+
+
+  
+
+
+

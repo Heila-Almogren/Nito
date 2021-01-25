@@ -1,8 +1,8 @@
 # Nito
-A chrome extension that provides a neat, simple and efficient lectures schedule.
+A chrome extension that provides a neat, simple and efficient lectures schedule 🗓.
 
 ### Features
-* Create a schedule and add the lectures within few clicks.
+* Create a schedule and add the lectures within few clicks .
 * Customize the schedule for different week settings
 * Add details for each lecture such as custom emoji, color, and room.
 * Flexible drag-and-drop change of lecture position in the schedule.
@@ -38,7 +38,10 @@ Adding a new lecture by clicking on any empty space in the schedule
 </p>
 
 
-  
+## Credits
+#### external plugins used
+* [Monent.js](https://momentjs.com/)
+* [EmojiPicker.js](https://github.com/wedgies/jquery-emoji-picker)
+* [Colorpicker.js](https://www.jqueryscript.net/demo/Flat-HTML5-Palette-Color-Picker-For-jQuery-colorPick-js/)
 
-
-
+& Thanks for the cool tester [@plateauh](https://github.com/plateauh) for her assistance in testing the extension! ♥️

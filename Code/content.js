@@ -9,12 +9,16 @@ $('document').ready(function () {
 
     // case 1 : no existing table -> load the default one
     if (!preferencesExist) {
-        initDefault()
+        initDefaultPreferences()
     } else {
         // case 2 : there is an existing atble, load it
-        initExisting()
+        initExistingPreferences()
     }
 
+
+    function findExistingData() {
+        return localStorage["lectures_data"] ? true : false
+    }
 
     function getDefaultData() {
         /*
@@ -37,6 +41,34 @@ $('document').ready(function () {
         }
     }
 
+    function getExistingData() {
+        /*
+        returns existing data
+        */
+        savedPreferences = JSON.parse(localStorage["preferences"]);
+        return {
+            'firstDay': savedPreferences.firstDay,
+            'nDays': parseInt(savedPreferences.nDays),
+            'firstLectureHours': savedPreferences.firstLecture.firstLectureHours,
+            'firstLectureMins': savedPreferences.firstLecture.firstLectureMins,
+            'firstLecturePeriod': savedPreferences.firstLecture.firstLecturePeriod,
+            'lastLectureHours': savedPreferences.lastLecture.firstLectureHours,
+            'lastLectureMins': savedPreferences.lastLecture.firstLectureMins,
+            'lastLecturePeriod': savedPreferences.lastLecture.firstLecturePeriod,
+            'lectureDurationHours': savedPreferences.lectureDuration.lectureDurationHours,
+            'lectureDurationMinutes': savedPreferences.lectureDuration.lectureDurationMinutes,
+            'showEmoji': savedPreferences.visibleInfo.showEmoji,
+            'showRoom': savedPreferences.visibleInfo.showRoom,
+            'timeTable': savedPreferences.timeTable
+        }
+    }
+
+
+
+
+
+
+
     function trigger_drop(draggable, droppable) {
 
         var droppableOffset = droppable.offset(),
@@ -51,7 +83,6 @@ $('document').ready(function () {
         return;
     }
 
-
     function loadScheduleData() {
         initDraggable()
         if (localStorage["lectures_data"]) {
@@ -65,21 +96,6 @@ $('document').ready(function () {
                 if (data[current_time]) {
                     for (j = 1; j <= nDays; j++) {
                         if (data[current_time][j]) {
-                            // $('<div class="lecDiv draggable"></div>').apppend('<div class="lecInfo emoji">' + data[current_time][j]['emoji'] + '</div><div class="lecInfo lecName">' + data[current_time][j]['title'] + '</div><div class="lecInfo lecRoom">' + data[current_time][j]['room'] + '</div>')
-                            //     .draggable();
-                            // droppable = $("#Schedule tr:nth-child(" + (i + 1) + ") td:nth-child(" + (j + 1) + ")").droppable();
-                            // droppableOffset = droppable.offset(),
-                            //     draggableOffset = draggable.offset(),
-                            //     dx = droppableOffset.left - draggableOffset.left,
-                            //     dy = droppableOffset.top - draggableOffset.top;
-
-                            // draggable.simulate("drag", {
-                            //     dx: dx,
-                            //     dy: dy
-                            // });
-                            // alert("hhh")
-                            //$("#Schedule tr:nth-child(" + (i + 1) + ") td:nth-child(" + (j + 1) + ")").addClass("has_lecture")
-                            //table.rows[i].cells[j].innerHTML = '<div class="lecDiv draggable"><div class="lecInfo emoji">' + data[current_time][j]['emoji'] + '</div><div class="lecInfo lecName">' + data[current_time][j]['title'] + '</div><div class="lecInfo lecRoom">' + data[current_time][j]['room'] + '</div></div>'
 
                             var lecDiv = document.createElement('div');
                             lecDiv.classList.add("lecDiv");
@@ -221,22 +237,14 @@ $('document').ready(function () {
 
     }
 
-    function initDefault() {
+    function initDefaultPreferences() {
         /*
         renders the table structure based on default preferences
         */
 
-        // default preferences
-
-
-
-
-
-
-
+        // get default preferences
         default_data = getDefaultData()
         timeTable = default_data.timeTable
-
 
         // create empty table to be embeded
         embeded = ''
@@ -284,7 +292,7 @@ $('document').ready(function () {
 
 
 
-    function initExisting() {
+    function initExistingPreferences() {
 
         /*
         Loades existing preferences and renders the table structure based on it
@@ -481,15 +489,6 @@ $('document').ready(function () {
         loadScheduleData()
     }
 
-    // d = {
-    //     'Sun': {
-    //         '8:00': {
-    //             'title': 'math',
-    //             'room': '67'
-    //         }
-    //     }
-    // }
-
     function addLecture(day, start) {
 
 
@@ -519,11 +518,6 @@ $('document').ready(function () {
         loadScheduleData()
     }
 
-
-    // lectures[lecture_day] = 'hi'
-    // lectures[lecture_day] = '😂'
-    // lectures[lecture_day] = 'A27'
-    // alert("hi")
 
     $(document).mouseup(function (e) {
         var container = $('#add_pop');

@@ -2,18 +2,7 @@ $('document').ready(function () {
 
 
 
-    // first of all, create the table
-
-    // check if saved preferences exist
-    var preferencesExist = localStorage["preferences"];
-
-    // case 1 : no existing table -> load the default one
-    if (!preferencesExist) {
-        initDefaultPreferences()
-    } else {
-        // case 2 : there is an existing atble, load it
-        initExistingPreferences()
-    }
+    initPreferences()
 
 
     function findExistingData() {
@@ -27,16 +16,24 @@ $('document').ready(function () {
         return {
             firstDay: 'Sun',
             nDays: 5,
-            firstLectureHours: '8',
-            firstLectureMins: '00',
-            firstLecturePeriod: 'am',
-            lastLectureHours: '4',
-            lastLectureMins: '0',
-            lastLecturePeriod: 'pm',
-            lectureDurationHours: 60,
-            lectureDurationMinutes: 0,
-            showEmoji: true,
-            showRoom: true,
+            'firstLecture': {
+                firstLectureHours: '8',
+                firstLectureMins: '00',
+                firstLecturePeriod: 'am'
+            },
+            'lastLecture': {
+                lastLectureHours: '4',
+                lastLectureMins: '0',
+                lastLecturePeriod: 'pm'
+            },
+            'lectureDuration': {
+                lectureDurationHours: 60,
+                lectureDurationMinutes: 0
+            },
+            'visibleInfo': {
+                showEmoji: true,
+                showRoom: true
+            },
             timeTable: ['8:00', '9:00', '10:00', '11:00', '12:00', '1:00', '2:00', '3:00']
         }
     }
@@ -49,16 +46,24 @@ $('document').ready(function () {
         return {
             'firstDay': savedPreferences.firstDay,
             'nDays': parseInt(savedPreferences.nDays),
-            'firstLectureHours': savedPreferences.firstLecture.firstLectureHours,
-            'firstLectureMins': savedPreferences.firstLecture.firstLectureMins,
-            'firstLecturePeriod': savedPreferences.firstLecture.firstLecturePeriod,
-            'lastLectureHours': savedPreferences.lastLecture.firstLectureHours,
-            'lastLectureMins': savedPreferences.lastLecture.firstLectureMins,
-            'lastLecturePeriod': savedPreferences.lastLecture.firstLecturePeriod,
-            'lectureDurationHours': savedPreferences.lectureDuration.lectureDurationHours,
-            'lectureDurationMinutes': savedPreferences.lectureDuration.lectureDurationMinutes,
-            'showEmoji': savedPreferences.visibleInfo.showEmoji,
-            'showRoom': savedPreferences.visibleInfo.showRoom,
+            'firstLecture': {
+                'firstLectureHours': savedPreferences.firstLecture.firstLectureHours,
+                'firstLectureMins': savedPreferences.firstLecture.firstLectureMins,
+                'firstLecturePeriod': savedPreferences.firstLecture.firstLecturePeriod,
+            },
+            'lastLecture': {
+                'lastLectureHours': savedPreferences.lastLecture.firstLectureHours,
+                'lastLectureMins': savedPreferences.lastLecture.firstLectureMins,
+                'lastLecturePeriod': savedPreferences.lastLecture.firstLecturePeriod,
+            },
+            'lectureDuration': {
+                'lectureDurationHours': savedPreferences.lectureDuration.lectureDurationHours,
+                'lectureDurationMinutes': savedPreferences.lectureDuration.lectureDurationMinutes,
+            },
+            'visibleInfo': {
+                'showEmoji': savedPreferences.visibleInfo.showEmoji,
+                'showRoom': savedPreferences.visibleInfo.showRoom,
+            },
             'timeTable': savedPreferences.timeTable
         }
     }
@@ -95,14 +100,15 @@ $('document').ready(function () {
                 current_time = table.rows[i].cells[0].querySelector('span').innerHTML
                 if (data[current_time]) {
                     for (j = 1; j <= nDays; j++) {
+
                         if (data[current_time][j]) {
 
                             var lecDiv = document.createElement('div');
                             lecDiv.classList.add("lecDiv");
                             lecDiv.classList.add("draggable");
                             lecDiv.style.backgroundColor = data[current_time][j]['color']
-                            isEmoji = localStorage["preferences"] ? Boolean(JSON.parse(localStorage["preferences"]).visibleInfo.showEmoji) : getDefaultData().showEmoji;
-                            isRoom = localStorage["preferences"] ? Boolean(JSON.parse(localStorage["preferences"]).visibleInfo.showRoom) : getDefaultData().showRoom;
+                            isEmoji = localStorage["preferences"] ? Boolean(JSON.parse(localStorage["preferences"]).visibleInfo.showEmoji) : getDefaultData().visibleInfo.showEmoji;
+                            isRoom = localStorage["preferences"] ? Boolean(JSON.parse(localStorage["preferences"]).visibleInfo.showRoom) : getDefaultData().visibleInfo.showRoom;
 
                             titleSpan = isEmoji && data[current_time][j]['emoji'] && !isRoom || !data[current_time][j]['room'] ? 'lecNameSpan' : 'lecNameNoSpan'
                             titleDiv = '<div class="lecInfo lecName ' + titleSpan + '">' + data[current_time][j]['title'] + '</div>'
@@ -113,7 +119,7 @@ $('document').ready(function () {
                             lecDiv.innerHTML = titleDiv + emojiDiv + roomDiv + delDiv
                             cell = table.rows[i].cells[j]
                             jCell = $(cell)
-                            //jCell.addClass('has_lecture');
+
                             cell.appendChild(lecDiv);
                             initDeletion()
                             //
@@ -237,14 +243,25 @@ $('document').ready(function () {
 
     }
 
-    function initDefaultPreferences() {
+    function initPreferences() {
         /*
-        renders the table structure based on default preferences
+        renders the table structure based on preferences
         */
+
+        var preferencesExist = localStorage["preferences"];
+
+        // case 1 : no existing table -> load the default one
+        if (!preferencesExist) {
+            data = getDefaultData()
+        } else {
+            // case 2 : there is an existing atble, load it
+            data = getExistingData()
+        }
+
 
         // get default preferences
-        default_data = getDefaultData()
-        timeTable = default_data.timeTable
+
+        timeTable = data.timeTable
 
         // create empty table to be embeded
         embeded = ''
@@ -257,17 +274,22 @@ $('document').ready(function () {
 
         Days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
         orderedDays = []
-        firstDayIndex = Days.indexOf(default_data.firstDay)
+        firstDayIndex = Days.indexOf(data.firstDay)
         init = firstDayIndex
 
-        for (i = 0; i < default_data.nDays; i++) {
+        for (i = 0; i < data.nDays; i++) {
             index = init % 7
-            embeded += '<td class="day">' + Days[index] + '</td>'
+            embeded += '<td class="day"><p>' + Days[index] + '</p></td>'
 
             //will use it later to insert data
             orderedDays[i] = Days[index]
             init++;
         }
+
+        // highlighting today
+        todaysIndex = new Date().getDay()
+        today = Days[todaysIndex]
+        RelIndex = orderedDays.indexOf(today)
 
         embeded += '</tr>'
 
@@ -277,8 +299,10 @@ $('document').ready(function () {
         for (i = 0; i < timeTable.length; i++) {
             z = timeTable[i].toString()
             embeded += '<td class="time"><span>' + timeTable[i] + '</span></td>'
-            for (j = 0; j < default_data.nDays; j++) {
-                embeded += '<td class="lecture droppable"></td>'
+            for (j = 0; j < data.nDays; j++) {
+                isToday = (j == RelIndex)
+                todayClass = isToday ? "today" : ""
+                embeded += '<td class="lecture droppable ' + todayClass + '"></td>'
             }
             embeded += '</tr>'
         }
@@ -287,77 +311,84 @@ $('document').ready(function () {
         // embed table
         $("#ScheduleDiv").append(embeded)
 
+        //highlighting today
+        tr = $($("#ScheduleDiv").find('tr')[0])
+        td = $(tr.find('td')[RelIndex + 1])
+        p = $(td.find('p')[0])
+        p.addClass('today_label')
+
+
         initSyncUIElements()
     }
 
 
 
-    function initExistingPreferences() {
+    // function initExistingPreferences() {
 
-        /*
-        Loades existing preferences and renders the table structure based on it
-        */
+    //     /*
+    //     Loades existing preferences and renders the table structure based on it
+    //     */
 
-        // load saved preferences
-        savedPreferences = JSON.parse(localStorage["preferences"]);
+    //     // load saved preferences
+    //     savedPreferences = JSON.parse(localStorage["preferences"]);
 
-        firstDay = savedPreferences.firstDay
-        nDays = parseInt(savedPreferences.nDays)
-        firstLectureHours = savedPreferences.firstLecture.firstLectureHours
-        firstLectureMins = savedPreferences.firstLecture.firstLectureMins
-        firstLecturePeriod = savedPreferences.firstLecture.firstLecturePeriod
-        lastLectureHours = savedPreferences.lastLecture.firstLectureHours
-        lastLectureMins = savedPreferences.lastLecture.firstLectureMins
-        lastLecturePeriod = savedPreferences.lastLecture.firstLecturePeriod
-        lectureDurationHours = savedPreferences.lectureDuration.lectureDurationHours
-        lectureDurationMinutes = savedPreferences.lectureDuration.lectureDurationMinutes
-        showEmoji = savedPreferences.visibleInfo.showEmoji
-        showRoom = savedPreferences.visibleInfo.showRoom
-        timeTable = savedPreferences.timeTable
+    //     firstDay = savedPreferences.firstDay
+    //     nDays = parseInt(savedPreferences.nDays)
+    //     firstLectureHours = savedPreferences.firstLecture.firstLectureHours
+    //     firstLectureMins = savedPreferences.firstLecture.firstLectureMins
+    //     firstLecturePeriod = savedPreferences.firstLecture.firstLecturePeriod
+    //     lastLectureHours = savedPreferences.lastLecture.firstLectureHours
+    //     lastLectureMins = savedPreferences.lastLecture.firstLectureMins
+    //     lastLecturePeriod = savedPreferences.lastLecture.firstLecturePeriod
+    //     lectureDurationHours = savedPreferences.lectureDuration.lectureDurationHours
+    //     lectureDurationMinutes = savedPreferences.lectureDuration.lectureDurationMinutes
+    //     showEmoji = savedPreferences.visibleInfo.showEmoji
+    //     showRoom = savedPreferences.visibleInfo.showRoom
+    //     timeTable = savedPreferences.timeTable
 
-        // create empty table to be embeded
-        embeded = ''
+    //     // create empty table to be embeded
+    //     embeded = ''
 
-        embeded += '<table id="Schedule">'
+    //     embeded += '<table id="Schedule">'
 
-        // add first row (days)
-        embeded += '<tr>'
-        embeded += '<td class="time"></td>'
+    //     // add first row (days)
+    //     embeded += '<tr>'
+    //     embeded += '<td class="time"></td>'
 
-        Days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-        orderedDays = []
-        firstDayIndex = Days.indexOf(firstDay)
-        init = firstDayIndex
+    //     Days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+    //     orderedDays = []
+    //     firstDayIndex = Days.indexOf(firstDay)
+    //     init = firstDayIndex
 
-        for (i = 0; i < nDays; i++) {
-            index = init % 7
-            embeded += '<td class="day">' + Days[index] + '</td>'
+    //     for (i = 0; i < nDays; i++) {
+    //         index = init % 7
+    //         embeded += '<td class="day">' + Days[index] + '</td>'
 
-            //will use it later to insert data
-            orderedDays[i] = Days[index]
-            init++;
-        }
+    //         //will use it later to insert data
+    //         orderedDays[i] = Days[index]
+    //         init++;
+    //     }
 
-        embeded += '</tr>'
+    //     embeded += '</tr>'
 
-        // time rows
-        embeded += '<tr>'
+    //     // time rows
+    //     embeded += '<tr>'
 
-        for (i = 0; i < timeTable.length; i++) {
-            z = timeTable[i].toString()
-            embeded += '<td class="time"><span>' + timeTable[i] + '</span></td>'
-            for (j = 0; j < nDays; j++) {
-                embeded += '<td class="lecture droppable"></td>'
-            }
-            embeded += '</tr>'
-        }
-        embeded += '</table>'
+    //     for (i = 0; i < timeTable.length; i++) {
+    //         z = timeTable[i].toString()
+    //         embeded += '<td class="time"><span>' + timeTable[i] + '</span></td>'
+    //         for (j = 0; j < nDays; j++) {
+    //             embeded += '<td class="lecture droppable"></td>'
+    //         }
+    //         embeded += '</tr>'
+    //     }
+    //     embeded += '</table>'
 
-        // embed table
-        $("#ScheduleDiv").append(embeded)
+    //     // embed table
+    //     $("#ScheduleDiv").append(embeded)
 
-        initSyncUIElements()
-    }
+    //     initSyncUIElements()
+    // }
 
 
     function initSyncUIElements() {
@@ -429,6 +460,7 @@ $('document').ready(function () {
                                 savedPreferences.lastLecture.lastLectureHours + ":" + savedPreferences.lastLecture.lastLectureMins :
                                 $(this).parent().parent().next().find('span').html()
                             // //JSON.parse(localStorage["preferences"]).timeTable[timeTable.indexOf(start)]
+                            console.log("xxx")
                             time = start + " - " + end
                             day = $(this).parent().index();
                             popup = '<div id="add_pop" style="display: block;"><table style="width:100%; height:100%; font-family: Avenir; font-size: 12px;"><tr><td colspan="2" style="border-bottom-color: #CECECE;border-bottom-style: solid;border-bottom-width: 1px; ;">' + time + '</td></tr><tr><td rowspan="2" id="trig"><input type="text" id="emojiArea" maxlength="1" readonly></input></td><td class="inputTD"><input type="text" maxlength="7" id="titleArea" class="lectureInput" placeholder="Class name"></td></tr><tr><td class="inputTD" style="position:relative;"><input type="text" id="roomArea" maxlength="7" class="lectureInput" maxlength="12" placeholder="Room"><div class="colorPickSelector" style="width: 20px; height: 20px; display:inline-block; position: absolute; clear: right; right:10"></div></td></tr><tr><td colspan="2"><button class="addLectureButton">Add lecture</button></td></tr></table></div>'
@@ -460,7 +492,7 @@ $('document').ready(function () {
                                             addLecture(day, start)
                                         } else {
                                             $('#titleArea').css('background-color', 'rgb(236, 163, 163)')
-                                            $('#titleArea').css('border', 'solid rgb(151, 60, 60)')
+                                            //$('#titleArea').css('border', 'solid rgb(151, 60, 60)')
                                         }
 
                                     })
@@ -490,8 +522,6 @@ $('document').ready(function () {
     }
 
     function addLecture(day, start) {
-
-
 
         var lectures = localStorage["lectures_data"] ? JSON.parse(localStorage["lectures_data"]) : {}
 

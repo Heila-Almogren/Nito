@@ -5,11 +5,14 @@
 
 body {
     width: 700px;
+    max-height: 500px;
     padding: 30px;
+    overflow:hidden;
+    border-radius: 50px;
 }
 
 h1{
-    font-family: Helvetica Neue;
+    font-family: Avenir;
     color: #707070;
 }
 
@@ -114,15 +117,23 @@ height: 100%;
 .settings {
     display: table-cell;
     vertical-align: middle;
-    background-color: #FDBC54; 
+    
     border-radius: 50%; 
     height: 40px; 
     width:40px;
     cursor: pointer;
 }
 
+#pref_button {
+    background-color: #5d5d5d; 
+}
+
+#scan_button {
+    background-color: #5d5d5d; 
+}
+
+
 .settings:hover {
-    background-color:  #ffaf2d; 
     box-shadow: 0px 2px 2px rgba(0,0,0,0.2);
     
 }
@@ -130,6 +141,7 @@ height: 100%;
 .lecDiv {
     position:absolute;
     top:0;
+    left:0;
     margin:auto;
     z-index: 10;
     cursor: grab;
@@ -157,35 +169,40 @@ height: 100%;
     padding-top:0px;
     padding-bottom:0px;
     box-sizing: border-box;
+    
 }
 
-.emoji{
+.emojiIcon{
     grid-column-start: 1;
     grid-column-end: 1;
     grid-row-start: 1;
     vertical-align: middle;
-    box-sizing: border-box;
-    text-align: center;
+    box-sizing: content-box;
+    text-align: right;
+    margin-left:5px;
     font-size: 25px;
     width:fit-content;
-}
-
-
-.emojiSpan {
     grid-row-end: span 2;
 }
+
+
+
 
 .emojiNoSpan {
     grid-row-end: 1;
 }
 
 .lecName {
+    box-sizing: content-box;
+    padding-top: 5px;
+    padding-bottom: 0px;
     grid-column-start: 2;
     grid-column-end: 2;
     grid-row-start: 1;
-    
+    /*  */
     font-size: 12px;
     font-weight: bold;
+    
 }
 
 .lecNameNoSpan {
@@ -197,31 +214,52 @@ height: 100%;
 }
 
 .lecRoom{
+    box-sizing: content-box;
+    padding-top: 0px;
+    padding-bottom: 5px;
     grid-column-start: 2;
     grid-column-end: 2;
     grid-row-start: 2;
     grid-row-end: 2;
+    
 }
+.lecRoomp{
+background-color:white;
+padding-left: 5px;
+padding-right: 5px;
+margin:0px;
+border-radius: 10px;
+text-align: left;
 
-.lecDel{
+}
+.lectAct{
     grid-column-start: 3;
     grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: span 2;
     text-align: right;
     opacity:0%;
+    
+    text-align: right;
+    
 }
 
-.lecDel:hover{
-opacity:100%
+.lectAct:hover{
+    opacity:100%
 }
 
 .deleteIcon {
     cursor: pointer;
-font-size: 15px;
-color: darkred;
+    font-size: 15px;
+    color: rgb(173, 11, 11);
 }
 
+.editIcon {
+    cursor: pointer;
+    font-size: 10px;
+    color: white;
+    
+}
 
 .addButton{
     position:absolute;
@@ -333,6 +371,28 @@ width: 120px;
 
 }
 
+#edit_pop{
+    z-index: 100;
+    font-family: Avenir;
+    width: 200px;
+    height: 130px;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    text-align: center;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: gainsboro;
+    opacity: 100%;
+    display: none;
+    /* box-shadow: 0px 2px 2px rgba(0,0,0,0.2); */
+
+
+}
+
 #emojiArea{
     z-index: 10;
     font-size: 40px;
@@ -356,6 +416,18 @@ width: 120px;
 
 
 .addLectureButton{
+    font-family: Avenir;
+    font-size: 12px;
+    width: 100px;
+    height: 20px;
+    background-color: #C3C3C3;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.editLectureButton{
     font-family: Avenir;
     font-size: 12px;
     width: 100px;

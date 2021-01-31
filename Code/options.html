@@ -203,38 +203,7 @@
                                 
                             </tr>
 
-                            <!-- <tr>
-                                <td></td>
-                                <td></td>
-                                
-                                
-
-                                <td>Visible Info
-                                    &nbsp;
-                                    &nbsp;
-                                    &nbsp;
-                                    &nbsp;
-                                    &nbsp;
-                                    &nbsp;
-                                    <div class="visible_div">
-
-                                        
-                                        <input type="checkbox" id="showEmoji" name="showEmoji" value="showEmoji">
-                                    </div>
-                                    <label for="showEmoji">Emoji</label>
-                                    
-                                    &nbsp;
-
-                                    <div class="visible_div">
-
-                                        <input type="checkbox" id="showRoom" name="showRoom" value="showRoom">
-                                    </div>
-                                    <label for="showRoom">Room</label>
-
-                                    &nbsp;
-
-                                </td>
-                            </tr> -->
+                            
                         </table>
                     </div>
                 </td>
@@ -256,6 +225,7 @@
                             
                             
                             </div>
+                            <p class="preview">Preview</p>
 
 <table id="Schedule">
     <tr>
@@ -355,14 +325,98 @@
                     </div>
                 </td>
             </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="settings_space">
+                        <table class="pref_table" style="border-collapse: collapse;">
+
+                            <!-- preferences main titles -->
+                            <tr>
+                                <td colspan="4">Data preferences</td>
+                            </tr>
+
+                            <tr>    
+                                <td>
+                                    Download lectures data <br> (in JSON format)
+                                    
+                                </td>
+                                <td>
+                                    <button class="optionButton DownloadDataButton" id="DownloadDataButton">Download
+                                        &nbsp; <i class="fas fa-download"></i>
+                                    </button>
+                                </td>
+
+                                <td>
+                                    Load lectures data <br> (must be JSON format)
+                                    
+                                </td>
+                                <td>
+                                    <button class="optionButton DownloadDataButton" id="UploadDataButton">Load file
+                                        <input type="file" id="loadInput" style="position: absolute; right:0; width: 90px; opacity: 0%; cursor: pointer;">
+                                        &nbsp; <i class="fas fa-upload"></i>
+                                        
+                                    </button>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td colspan="4">
+
+                                    <table  style="border: solid rgb(224, 159, 159); border-radius: 10px; padding: 5px">
+                                        <tr>
+                                            <td width="12%" rowspan="3" style="vertical-align: middle; border: none; text-align: center;">
+                                                Danger Zone
+                                            </td>
+                                            <td rowspan="3" style="border: none;"></td>
+                                            
+            
+                                            <td width="40%">
+                                                Clear all lectures
+                                            </td>
+                                            <td rowspan="3" style="border: none;"></td>
+            
+                                            <td width="40%">
+                                                Reset all preferences data 
+                                            </td>
+                                            
+                                        </tr>
+            
+                                        <tr>
+                                            
+                                            <td class="warning_explanation">
+                                                This will clear all data related to schedule lectures (list of lectures), once this option is chosen the data cannot be recovered.
+                                            <br> <br>
+                                            <button class="optionButton resetButton" id="resetDataButton">Clear Lectures Data</button>
+                                            </td>
+            
+                                            <td class="warning_explanation">
+                                                This will reset table preferences to default preferences (time settings, number of days per week, lecture durations.. etc). It will not effect lectures data, but some lecture data may not show at all, or not show properly until preferences are set again as before.
+                                            <br> <br>
+                                            <button class="optionButton resetButton" id="resetPrefButton">Reset Preferences Data</button>
+                                            </td>
+                                            
+                                        </tr>
+                                        
+                                    </table>
+                                </td>
+                            </tr>
+                            
+                            
+
+</table>
+                    </div>
+                </td>
+            </tr>
             
         </table>
     </div>
+    
 
 
 
-
-
+    <!-- <td>
+        
+    </td> -->
     
     
     <!-- <button id="save">Save</button> -->

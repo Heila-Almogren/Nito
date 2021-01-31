@@ -105,7 +105,10 @@ function restoreOptions() {
     }
 }
 
+function clearStorage() {
+    localStorage.clear();
 
+}
 
 function changeDaysSequence() {
 
@@ -366,6 +369,58 @@ function formTimeArray() {
 }
 
 
+function downloadData() {
+    if (localStorage["lectures_data"]) {
+        var blob = new Blob([localStorage["lectures_data"]], { type: "application/json" });
+        var url = URL.createObjectURL(blob);
+        chrome.downloads.download({
+            url: url
+        });
+    } else {
+        alert("no Data found.")
+    }
+
+
+}
+
+function resetPreferences() {
+    if (confirm("Are you sure that you want to reset all preferences?")) {
+        localStorage.removeItem('preferences');
+        location.reload();
+
+
+    }
+}
+
+function resetData() {
+    if (confirm("Are you sure that you want to reset all data?")) {
+        localStorage.removeItem('lectures_data');
+    }
+}
+
+
+document.getElementById("loadInput").addEventListener('change', function (evt) {
+    var f = evt.target.files[0];
+    if (f) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            var contents = e.target.result;
+            localStorage["lectures_data"] = contents
+            alert("Data imported.")
+            /* Handle your document contents here */
+            document.location.href = url_array; // My extension's logic
+        }
+        reader.readAsText(f);
+    }
+});
+
+// var blob = new Blob(["array of", " parts of ", "text file"], {type: "text/plain"});
+// var url = URL.createObjectURL(blob);
+// chrome.downloads.download({
+//   url: url // The object URL can be used as download URL
+//   //...
+// });
+
 
 
 // document.getElementById("status").style.display = "none";
@@ -389,6 +444,10 @@ document.getElementById("lastLecturePeriod").addEventListener('change', createLe
 
 document.getElementById("lectureDurationHours").addEventListener('change', createLecturesTable);
 document.getElementById("lectureDurationMinutes").addEventListener('change', createLecturesTable);
+
+document.getElementById("DownloadDataButton").addEventListener('click', downloadData);
+document.getElementById("resetDataButton").addEventListener('click', resetData);
+document.getElementById("resetPrefButton").addEventListener('click', resetPreferences);
 
 // Lecture duration
 // document.getElementById("Schedule")

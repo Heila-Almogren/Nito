@@ -101,13 +101,7 @@ function restoreOptions() {
         document.getElementById("lectureDurationMinutes").value = savedPreferences.lectureDuration.lectureDurationMinutes
         document.getElementById("showEmoji").checked = savedPreferences.visibleInfo.showEmoji
         document.getElementById("showRoom").checked = savedPreferences.visibleInfo.showRoom
-        // document.getElementById("showLecturer").checked = savedPreferences.visibleInfo.showLecturer
     }
-}
-
-function clearStorage() {
-    localStorage.clear();
-
 }
 
 function changeDaysSequence() {
@@ -370,6 +364,11 @@ function formTimeArray() {
 
 
 function downloadData() {
+
+    /*
+    Downloads data as JSON file
+    */
+
     if (localStorage["lectures_data"]) {
         var blob = new Blob([localStorage["lectures_data"]], { type: "application/json" });
         var url = URL.createObjectURL(blob);
@@ -384,6 +383,11 @@ function downloadData() {
 }
 
 function resetPreferences() {
+
+    /*
+    Resets preferences in the local storage
+    */
+
     if (confirm("Are you sure that you want to reset all preferences?")) {
         localStorage.removeItem('preferences');
         location.reload();
@@ -393,64 +397,52 @@ function resetPreferences() {
 }
 
 function resetData() {
+
+    /*
+    Resets data in the local storage
+    */
+
     if (confirm("Are you sure that you want to reset all data?")) {
         localStorage.removeItem('lectures_data');
     }
 }
 
+function importData(e) {
 
-document.getElementById("loadInput").addEventListener('change', function (evt) {
-    var f = evt.target.files[0];
+    /*
+    imports data as a json file
+    */
+
+    var f = e.target.files[0];
     if (f) {
         var reader = new FileReader();
         reader.onload = function (e) {
             var contents = e.target.result;
             localStorage["lectures_data"] = contents
             alert("Data imported.")
-            /* Handle your document contents here */
-            document.location.href = url_array; // My extension's logic
+            document.location.href = url_array;
         }
         reader.readAsText(f);
     }
-});
-
-// var blob = new Blob(["array of", " parts of ", "text file"], {type: "text/plain"});
-// var url = URL.createObjectURL(blob);
-// chrome.downloads.download({
-//   url: url // The object URL can be used as download URL
-//   //...
-// });
+}
 
 
+// Event Listeners
 
-// document.getElementById("status").style.display = "none";
 document.addEventListener('DOMContentLoaded', restoreOptions);
 document.querySelector('#save').addEventListener('click', saveOptions);
-
-// First day of the week change
 document.getElementById("firstDay").addEventListener('change', changeDaysSequence);
-
-// Number of days per week
 document.getElementById("nDays").addEventListener('change', changeNumberOfDays);
-
-// First lecture time
 document.getElementById("firstLectureHours").addEventListener('change', createLecturesTable);
 document.getElementById("firstLectureMins").addEventListener('change', createLecturesTable);
 document.getElementById("firstLecturePeriod").addEventListener('change', createLecturesTable);
-
 document.getElementById("lastLectureHours").addEventListener('change', createLecturesTable);
 document.getElementById("lastLectureMins").addEventListener('change', createLecturesTable);
 document.getElementById("lastLecturePeriod").addEventListener('change', createLecturesTable);
-
 document.getElementById("lectureDurationHours").addEventListener('change', createLecturesTable);
 document.getElementById("lectureDurationMinutes").addEventListener('change', createLecturesTable);
-
 document.getElementById("DownloadDataButton").addEventListener('click', downloadData);
 document.getElementById("resetDataButton").addEventListener('click', resetData);
 document.getElementById("resetPrefButton").addEventListener('click', resetPreferences);
+document.getElementById("loadInput").addEventListener('change', importData);
 
-// Lecture duration
-// document.getElementById("Schedule")
-
-// visible info
-// document.getElementById("Schedule")

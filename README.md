@@ -6,6 +6,8 @@ A chrome extension that provides a neat, simple and efficient lectures schedule 
 * Customize the schedule for different week settings
 * Add details for each lecture such as custom emoji, color, and room.
 * Flexible drag-and-drop change of lecture position in the schedule.
+* Import / Export schedule easily as JSON.
+* (KSU Students Only) Detect and generate schedule directly from edugate.
 
 ### Installation
 1. From a chrome browser, click on extentions icon > Manage extensions (or from the menu choose more tools > extensions).
